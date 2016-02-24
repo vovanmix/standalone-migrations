@@ -5,4 +5,5 @@ RUN mkdir /opt/migrations
 WORKDIR /opt/migrations
 ADD Gemfile /opt/migrations/Gemfile
 ADD Gemfile.lock /opt/migrations/Gemfile.lock
+ADD Rakefile /opt/migrations/Rakefile
 RUN bundle install -j 8
