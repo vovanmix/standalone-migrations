@@ -1,5 +1,5 @@
 
-### Create a docker-compose.yml in a root your project
+### Create a docker-compose.yml on your project root
 
 ```
 migrate:
@@ -16,7 +16,7 @@ migrate:
 development:
   adapter: mysql2
   encoding: utf8
-  database: base_desenvolvimento
+  database: database_development
   username: user
   password: pass
   host: 192.168.1.2
@@ -24,7 +24,7 @@ development:
 production:
   adapter: mysql2
   encoding: utf8
-  database: base_producao
+  database: database_production
   username: user
   password: pass
   host: 192.168.1.3
@@ -35,13 +35,13 @@ production:
 - To dump the base and place inside the db folder
 
 ```
-docker-compose run db mysql -hdb -pmypass base_desenvolvimento < ../../db/structure.sql
+docker-compose run db mysql -hdb -pmypass database_developer < ../../db/structure.sql
 ```
 
 ### Create a new migration
 
 ```
-docker-compose run migrate rake db:new_migration name="nome_migration"
+docker-compose run migrate rake db:new_migration name="migration_name"
 ```
 
 ### Run migrations
