@@ -1,5 +1,5 @@
 
-### Create a docker-compose.yml on your project root
+### Create a docker-compose.yml on your project
 
 ```
 migrate:
@@ -8,9 +8,9 @@ migrate:
     - ./db:/opt/migrations/db
 ```
 
-- In your project should have a folder 'db'
+As in the example you must have a 'db' folder in the same directory
 
-### Create a config.yml inside the db folder
+### Create a config.yml inside the 'db' folder
 
 ```
 development:
@@ -30,12 +30,10 @@ production:
   host: 192.168.1.3
 ```
 
-### Create a database
-
-- To dump the base and place inside the db folder
+### Restore an existing database
 
 ```
-docker-compose run db mysql -hdb -pmypass database_developer < ../../db/structure.sql
+docker-compose run db mysql -hdb -pmypass database_development < ./db/structure.sql
 ```
 
 ### Create a new migration
@@ -50,7 +48,7 @@ docker-compose run migrate rake db:new_migration name="migration_name"
 docker-compose run migrate rake db:migrate
 ```
 
-### Run migrations in a production
+### Run migrations in production
 
 ```
 docker-compose run -e RAILS_ENV='production' migrate rake db:migrate
